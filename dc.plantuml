@@ -1,0 +1,29 @@
+---
+title: Exercice 2 : Diagramme de classe ({{ date | date('dddd, MMMM Do') }})
+---
+Réalisez un diagramme de classe correspondant au sujet (attributs et associations uniquement)
+@startuml
+
+class Entreprise
+class Artisans{
+    -salaire
+    -coordonnees
+}
+class Specialite
+class Chantier{
+    -dateDebut
+    -dateFin
+    -adresse
+}
+class Affecter{
+    -nombreHeures
+    -debutMission
+    -finMission
+    getPaye()
+}
+Artisans "1"--"*" Specialite : être former
+Entreprise "*"--"1" Chantier : gérer
+Entreprise "*"--"1" Artisans : employer
+(Artisans,Chantier) . Affecter
+
+@enduml
